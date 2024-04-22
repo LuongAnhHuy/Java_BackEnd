@@ -1,4 +1,4 @@
-package Java_Buoi_3;
+package Java_Buoi_3.Bank;
 
 public class User {
     long id;
