@@ -15,24 +15,6 @@ public class main {
     public static void main(String[] args) {
         List<QuanLy> quanLyList = new ArrayList<>();
         boolean exit = false;
-//        QuanLy loai1 = new QuanLy();
-//        loai1.setLoaiPhong("Loai A");
-//        loai1.setGiaTien(2000000);
-//        loai1.setId(1);
-//
-//        QuanLy loai2 = new QuanLy();
-//        loai2.setLoaiPhong("Loai B");
-//        loai2.setGiaTien(1000000);
-//        loai1.setKhachHang(0);
-//
-//        QuanLy loai3 = new QuanLy();
-//        loai3.setLoaiPhong("Loai B");
-//        loai3.setGiaTien(500000);
-//
-//        loai1.inThongTin();
-//        loai2.inThongTin();
-//        loai3.inThongTin();
-
         do {
             System.out.println("Vui long nhap lua chon: \n" +
                     "1. Nhap thong tin phong \n" +
@@ -59,23 +41,31 @@ public class main {
                         System.out.println("Phong khong ton tai");
                     }
                     if (quanLy != null){
-                        System.out.println("So khach o trong phong");
-                        long soKhach = scanner.nextLong();
-                        kiemTraPhong(quanLy, soKhach);
+                        kiemTraPhong(quanLy);
                     }else {
                         System.out.println("Khong co khach trong phong");
                     }
-
-
+                    break;
+                case 3:
+                    QuanLy kiemTraPhong = searchPhong(inputID(), quanLyList);
+                        if (kiemTraPhong != null){
+                            System.out.println("Nhap so ngay khach o khach san");
+                            long soNgay = scanner.nextLong();
+                            System.out.println("Gia tien phong la " + kiemTraPhong.thanhToan(soNgay));
+                        }else {
+                            System.out.println("Thanh toan khong thanh cong");
+                        }
                     break;
                 default:
+                    System.out.println("Bye!!!!!!!!!!!");
+                    exit = true;
                     break;
             }
         }while (!exit);
     }
 
     private static long inputID(){
-        System.out.println("Nhap ID de xem thong tin phong");
+        System.out.println("Nhap ID: ");
         return scanner.nextLong();
     }
 
@@ -106,19 +96,15 @@ public class main {
         return new QuanLy(giaTien, loaiPhong, id, khachHang);
     }
 
-    public void thanhToan(QuanLy quanLy, long soNgay){
-        quanLy.thanhToan(soNgay);
-    }
-
-    public static void addUser(List<QuanLy> quanLyList, QuanLy quanLy){
+    private static void addUser(List<QuanLy> quanLyList, QuanLy quanLy){
         quanLyList.add(quanLy);
     }
-    public static void kiemTraPhong(QuanLy quanLy, long soKhach){
-        boolean thanhCong = quanLy.kiemTraPhong(soKhach);
+    private static void kiemTraPhong(QuanLy quanLy){
+        boolean thanhCong = quanLy.kiemTraPhong();
         if (thanhCong){
-            System.out.println("Phong co khach");
+            System.out.println(" ------ Phong co khach ------");
         }else {
-            System.out.println("Phong khong co khach");
+            System.out.println("------ Phong khong co khach ------");
         }
 
     }

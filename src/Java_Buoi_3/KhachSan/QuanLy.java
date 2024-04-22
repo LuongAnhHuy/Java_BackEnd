@@ -5,6 +5,7 @@ public class QuanLy {
     String loaiPhong;
     long id;
     long khachHang;
+    long giaTienThanhToan;
 
 
     public QuanLy(long giaTien, String loaiPhong, long id, long khachHang) {
@@ -14,53 +15,24 @@ public class QuanLy {
         this.khachHang = khachHang;
     }
 
-    public boolean kiemTraPhong(long soKhachHienTai){
-        if (soKhachHienTai > khachHang){
+    public boolean kiemTraPhong(){
+        if (khachHang > 0){
             return true;
         }else{
             return false;
         }
-
-
     }
-    public void thanhToan(long soNgay){
-        giaTien += soNgay;
+    public long thanhToan(long soNgay){
+        return giaTienThanhToan = giaTien * soNgay;
     }
 
-    public void setLoaiPhong(String loaiPhong) {
-        this.loaiPhong = loaiPhong;
-    }
-
-    public void setGiaTien(long giaTien) {
-        this.giaTien = giaTien;
-    }
-
-    public String getLoaiPhong() {
-        return loaiPhong;
-    }
-
-    public long getGiaTien() {
-        return giaTien;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setKhachHang(long khachHang) {
-        this.khachHang = khachHang;
-    }
-
-    public long getKhachHang() {
-        return khachHang;
-    }
 
     public long getId() {
         return id;
     }
 
     public void inThongTin(){
-        System.out.println("ID Phong: " + id + " Loai Phong: " + loaiPhong + " Gia tien la: " + giaTien);
+        System.out.println("ID Phong: " + id + ", Loai Phong: " + loaiPhong + ", Gia tien la: " + giaTien + ", Co: " + khachHang + " Khach");
     }
 
 }
