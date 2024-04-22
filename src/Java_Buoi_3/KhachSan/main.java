@@ -78,7 +78,6 @@ public class main {
         return null;
     }
 
-
     private static QuanLy nhapDataPhong() {
         System.out.println("Nhap ID: ");
         long id = scanner.nextLong();
